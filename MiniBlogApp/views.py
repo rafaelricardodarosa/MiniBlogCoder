@@ -6,12 +6,11 @@ from .models import *
 from .forms import *
 from django.db.models import Q
 
-# Create your views here.
 
 def inicio(request):
 
     return render(request, "MiniBlogApp/index.html", {})
 
-def base(request):
+# def base(request):
     
-    return render(request, "MiniBlogApp/base.html", {})
+#     return render(request, "MiniBlogApp/base.html", {})

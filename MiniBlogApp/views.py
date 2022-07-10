@@ -23,11 +23,16 @@ def blog(request):
     post = Post.objects.all()
     category = Category.objects.all()
     post_latest = Post.objects.order_by('id')[:3]
+    
+    # a continuacion incorporamos funcionalidad de pagination para django, para pasar entre numeros de paginas de blog arriba del footer.
+    
+    paginator = Paginator(post, 2) # Muestra 2 posts por pagina. 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'post' : post,
+        'page_obj' : page_obj,
         'category' : category,
         'post_latest': post_latest
-
     }
     return render(request, 'pages/blog.html', context)

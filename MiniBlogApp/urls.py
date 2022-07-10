@@ -7,5 +7,6 @@ urlpatterns = [
      
     # URLS de ProyectoCoderApp
     path('', index, name="inicio"), #vista de inicio de la app
+    path('blog/', blog, name='blog')
     
 ]

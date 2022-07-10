@@ -1,12 +1,18 @@
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.core.paginator import Paginator
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+# Create your views here.
 
-from .models import *
-from .forms import *
-from django.db.models import Q
+from PostApp.models import Post, Category
 
+def index(request):
+    post_random = Post.objects.order_by('?')[:4]
+    post_latest = Post.objects.order_by('id')[:3]
+    category = Category.objects.all()
 
-def inicio(request):
-
-    return render(request, "index.html") #vista de inicio de la app
+    context = {
+        'post_random': post_random,
+        'post_latest': post_latest,
+        'category': category
+    }
+    return render(request, 'index.html', context)

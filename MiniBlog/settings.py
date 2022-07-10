@@ -145,3 +145,5 @@ CKEDITOR_CONFIGS = {
 }
 
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
+CKEDITOR_UPLOAD_PATH = "images/uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"

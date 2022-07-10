@@ -6,6 +6,6 @@ from .views import *
 urlpatterns = [
      
     # URLS de ProyectoCoderApp
-    path('', inicio, name="inicio"), #vista de inicio de la app
+    path('', index, name="inicio"), #vista de inicio de la app
     
 ]

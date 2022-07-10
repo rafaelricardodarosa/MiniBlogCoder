@@ -9,5 +9,4 @@ from django.db.models import Q
 
 def inicio(request):
 
-    return render(request, "MiniBlogApp/index.html", {}) #vista de inicio de la app
-
+    return render(request, "index.html") #vista de inicio de la app

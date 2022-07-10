@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     
     #apps de mi proyecto
     'MiniBlogApp',
+    'PostApp',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'MiniBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"MiniBlogApp\templates\MiniBlogApp"],
+        'DIRS': [BASE_DIR / 'templates'], #r"MiniBlogApp\templates\MiniBlogApp"
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

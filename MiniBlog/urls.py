@@ -22,4 +22,5 @@ urlpatterns = [
     
      # URLS de MiniBlogApp
     path('miniblog/', include('MiniBlogApp.urls')), #aqui se incluye el archivo urls.py de MiniBlogApp (trae todas las urls de la app)
+    path('post/', include('PostApp.urls')), #aqui se incluye el archivo urls.py de PostApp (trae todas las urls de la app)
 ]

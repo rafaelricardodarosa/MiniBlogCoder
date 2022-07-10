@@ -4,6 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse 
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
 # Create your models here.
 
 class Category(models.Model):

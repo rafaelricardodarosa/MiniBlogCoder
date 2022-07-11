@@ -1,9 +1,8 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
+from PostApp.models import Post, Category, Comment
 
 # Create your views here.
-
-from PostApp.models import Post, Category
 
 def index(request):
     post_random = Post.objects.order_by('?')[:4]
@@ -26,7 +25,7 @@ def blog(request):
     
     # a continuacion incorporamos funcionalidad de pagination para django, para pasar entre numeros de paginas de blog arriba del footer.
     
-    paginator = Paginator(post, 4) # Muestra 2 posts por pagina. 
+    paginator = Paginator(post, ) # Muestra 2 posts por pagina. 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -39,4 +38,14 @@ def blog(request):
 
 def post_detail(request, id, slug):
     post = Post.objects.get(pk=id)
-    return render(request, 'pages/post_detail.html',{'post': post })
+    comments = Comment.objects.filter(post_id=id, status='Leido')
+    total = 0
+    for i in comments:
+        total = total + 1
+    
+    context = {
+        'post': post,
+        'comments': comments,
+        'total': total}
+
+    return render(request, 'pages/post_detail.html', context)

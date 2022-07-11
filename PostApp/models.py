@@ -46,15 +46,15 @@ class Post(models.Model):
 
 class Comment(models.Model):
     STATUS = (
-        ('Lido', 'Lido'),
-        ('Não Lido', 'Não Lido'),
+        ('Leido', 'Leido'),
+        ('No Leido', 'No Leido'),
     )
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=255, blank=False)
     comment = models.TextField()
 
-    status = models.CharField(choices=STATUS, max_length=10, default="Não Lido")
+    status = models.CharField(choices=STATUS, max_length=10, default="No Leido")
 
     created_at = models.DateTimeField(auto_now_add=True)
 

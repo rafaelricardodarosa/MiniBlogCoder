@@ -1,11 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
-
-from .views import *
+from . import views
 
 urlpatterns = [
-     
-    # URLS de ProyectoCoderApp
-    path('', post, name="post"), #vista de inicio de la app
-    
+    path('addcomment/<int:id>', views.addcomment, name='addcomment')
 ]

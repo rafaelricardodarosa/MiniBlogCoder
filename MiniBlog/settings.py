@@ -138,6 +138,7 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#ckeditor sirve para crear un editor de texto y subir imagenes
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'basic',

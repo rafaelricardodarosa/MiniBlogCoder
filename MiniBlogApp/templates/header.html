@@ -24,18 +24,8 @@
                      <li class="nav-item">
                          <a class="nav-link" href="/contact/">Contacto</a>
                      </li>
-                     {% if user.is_authenticated %}
-                     <div class="nav-item">
-                        <a class="nav-link" href="editar_perfil/">{{user.username}}</a>
-                    </div>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/logout/">Cerrar sesión</a>
-                     {% else %}
                      <li class="nav-item">
                         <a class="nav-link" href="/login/">Login</a>
-                     <li class="nav-item">
-                        <a class="nav-link" href="/register/">Register</a>
-                     {% endif %}
                     </li>
                  </ul>
              </div>

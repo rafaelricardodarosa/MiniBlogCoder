@@ -12,10 +12,12 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: black;
+    font-weight: 350;
 }
 
 p {
-    margin-bottom: 0px;
+    margin-bottom: 22px;
     font-size: 15px;
     font-weight: 400;
     color: #7a7a7a;
@@ -24,6 +26,8 @@ p {
 
 a {
     text-decoration: none!important;
+    color: black;
+    font-weight: 600;
 }
 
 ul {

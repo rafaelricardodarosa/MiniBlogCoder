@@ -18,7 +18,8 @@ def index(request):
     context = {
         'post_random': post_random,
         'post_latest': post_latest,
-        'category': category
+        'category': category,
+        'home_page': 'active'
     }
     return render(request, 'index.html', context)
 
@@ -38,7 +39,8 @@ def blog(request):
     context = {
         'page_obj' : page_obj,
         'category' : category,
-        'post_latest': post_latest
+        'post_latest': post_latest,
+        'blog_page': 'active'
     }
     return render(request, 'pages/blog.html', context)
 
@@ -70,13 +72,18 @@ def contact(request):
             return HttpResponseRedirect('/contact/')
     form = ContactForm
     context = {
-        'form': form
+        'form': form,
+        'contact_page':'active'
     }
 
     return render(request, 'pages/contact.html', context)
 
 def about(request):
-    return render(request, 'pages/about.html')
+    
+    context = {
+        'about_page': 'active'
+    }
+    return render(request, 'pages/about.html', context)
 
 def login_request(request):
     if request.method == "POST":
@@ -96,10 +103,9 @@ def login_request(request):
             
         else:
             return redirect("Login")
-        
     else:
         form = AuthenticationForm()
-        return render(request, "login.html", {"form":form})
+        return render(request, "login.html", {"form":form, "login_page":"active"})
             
 def register(request):
     if request.method == "POST":
@@ -113,7 +119,7 @@ def register(request):
         return redirect("Register")
     else:
         form = UserRegisterForm()
-        return render(request, "register.html", {"form":form})
+        return render(request, "register.html", {"form":form,"register_page":"active"})
 
 def logout_request(request):
     logout(request)

@@ -23,8 +23,10 @@ p {
 }
 
 a {
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
+
+/* a:visited{color:white !important;} */
 
 ul {
     padding: 0;

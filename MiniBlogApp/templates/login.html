@@ -1,0 +1,28 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Blog Django {% endblock  %}
+
+ {% block preloader %} {% include 'preloader.html' %} {% endblock  %}
+ {% block header %} {% include 'header.html' %} {% endblock  %}
+ {% block slide %} {% include 'slide.html' %} <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Iniciar sesión</title>
+ </head>
+ <body>
+    <br>
+     <h1>Iniciá sesión</h1>
+     <br>
+     <form method = "post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <br>
+         <input class="btn btn-primary" type="submit" value="Iniciar sesión">
+     </form>
+     <br>
+     <br>
+ </body>
+ </html>{% endblock  %}

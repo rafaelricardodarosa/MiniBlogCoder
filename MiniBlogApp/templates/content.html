@@ -14,8 +14,8 @@
                          </a>
                          <ul class="post-info">
                              <li><a href="#">{{item.user.first_name}}</a></li>
-                             <li><a href="#">{{item.created_at|date:"d/m/Y"}}</a></li>
-                             <li><a href="#">12 Comments</a></li>
+                             <li><a href="#">Last updated at {{item.created_at|date:"d/m/Y"}}</a></li>
+                             <li><a href="#">Comments</a></li>
                          </ul>
                          <p>{{item.description}}</p>
                          <div class="post-options">
@@ -40,11 +40,6 @@
                  </div>
              </div>
              {% endfor %}
-             <div class="col-lg-12">
-                 <div class="main-button">
-                     <a href="blog.html">View All Posts</a>
-                 </div>
-             </div>
          </div>
      </div>
  </div>

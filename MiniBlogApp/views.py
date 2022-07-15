@@ -31,7 +31,7 @@ def blog(request):
     
     # a continuacion incorporamos funcionalidad de pagination para django, para pasar entre numeros de paginas de blog arriba del footer.
     
-    paginator = Paginator(post, ) # Muestra 2 posts por pagina. 
+    paginator = Paginator(post, 2) # Muestra 2 posts por pagina. 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

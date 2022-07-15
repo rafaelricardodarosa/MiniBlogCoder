@@ -1,8 +1,12 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render, HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from PostApp.models import Post, Category, Comment
 from MiniBlogApp.models import Contact
 from MiniBlogApp.forms import ContactForm
+from .forms import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -74,3 +78,63 @@ def contact(request):
 def about(request):
     return render(request, 'pages/about.html')
 
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            contraseña = form.cleaned_data.get("password")
+            
+            user = authenticate(username=usuario, password=contraseña)
+            
+            if user is not None:
+                login(request, user)
+                return redirect("inicio")
+            else:
+                return redirect("Login")
+            
+        else:
+            return redirect("Login")
+        
+    else:
+        form = AuthenticationForm()
+        return render(request, "login.html", {"form":form})
+            
+def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+    
+        if form.is_valid():
+            form.save()
+            
+            return redirect("Login")
+        
+        return redirect("Register")
+    else:
+        form = UserRegisterForm()
+        return render(request, "register.html", {"form":form})
+
+def logout_request(request):
+    logout(request)
+    return redirect("inicio")
+
+def editar_perfil(request):
+    user = request.user
+    if request.method == "POST":
+        form = UserEditForm(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            
+            user.email = info["email"]
+            user.first_name = info["first_name"]
+            user.last_name = info["last_name"]
+            user.password1 = info["password1"]
+            user.password2 = info["password1"]
+            user.save()
+            
+            return redirect("inicio")
+    else:
+        form = UserEditForm(initial={"email":user.email, "first_name":user.first_name,"last_name":user.last_name})
+    
+    return render(request, "editar_perfil.html", {"form":form, "user":user})

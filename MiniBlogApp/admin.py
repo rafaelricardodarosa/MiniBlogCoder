@@ -3,4 +3,4 @@ from django.contrib import admin
 from .models import *
 
 # Registre sus modelos aquí para que sea posible visualizar via django admin
-#admin.site.register(MiniBlog) ejemplo de registro de un modelo
+admin.site.register(Contact)

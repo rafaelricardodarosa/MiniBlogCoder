@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from PostApp.models import Post, Category, Comment
+from MiniBlogApp.models import Contact
+from MiniBlogApp.forms import ContactForm
 
 # Create your views here.
 
@@ -49,3 +51,26 @@ def post_detail(request, id, slug):
         'total': total}
 
     return render(request, 'pages/post_detail.html', context)
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            data = Contact()
+            data.name = form.cleaned_data['name']
+            data.email = form.cleaned_data['email']
+            data.subject = form.cleaned_data['subject']
+            data.message = form.cleaned_data['message']
+
+            data.save()
+            return HttpResponseRedirect('/contact/')
+    form = ContactForm
+    context = {
+        'form': form
+    }
+
+    return render(request, 'pages/contact.html', context)
+
+def about(request):
+    return render(request, 'pages/about.html')
+

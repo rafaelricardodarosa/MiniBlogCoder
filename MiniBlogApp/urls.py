@@ -11,5 +11,6 @@ urlpatterns = [
     path('blog/', blog, name='blog'), # Vista de blogs
     path('post/<int:id>/<slug:slug>', post_detail, name='post_detail'), # Vista de template detallado de blogs, con id y slug unico asociado.
     path('contact/', contact, name='contacto'), # Vista de contacto ,
+    path('about/', about, name='about' ), # Vista de sobre nosotros ,
     
 ]

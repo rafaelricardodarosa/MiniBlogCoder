@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -35,3 +36,13 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ["first_name", "last_name",  "email", "password1", "password2"]
         help_texts = {k:"" for k in fields }
+=======
+from django.forms import ModelForm
+
+from .models import Contact
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject', 'message']
+>>>>>>> 2a1b38b098010972325ce498d1608cc0cf625009

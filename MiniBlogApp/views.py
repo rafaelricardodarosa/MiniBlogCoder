@@ -1,10 +1,16 @@
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from PostApp.models import Post, Category, Comment
+<<<<<<< HEAD
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import *
+=======
+from MiniBlogApp.models import Contact
+from MiniBlogApp.forms import ContactForm
+
+>>>>>>> 2a1b38b098010972325ce498d1608cc0cf625009
 # Create your views here.
 
 def index(request):
@@ -53,6 +59,7 @@ def post_detail(request, id, slug):
 
     return render(request, 'pages/post_detail.html', context)
 
+<<<<<<< HEAD
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
@@ -111,3 +118,27 @@ def editar_perfil(request):
         form = UserEditForm(initial={"email":user.email, "first_name":user.first_name,"last_name":user.last_name})
     
     return render(request, "editar_perfil.html", {"form":form, "user":user})
+=======
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            data = Contact()
+            data.name = form.cleaned_data['name']
+            data.email = form.cleaned_data['email']
+            data.subject = form.cleaned_data['subject']
+            data.message = form.cleaned_data['message']
+
+            data.save()
+            return HttpResponseRedirect('/contact/')
+    form = ContactForm
+    context = {
+        'form': form
+    }
+
+    return render(request, 'pages/contact.html', context)
+
+def about(request):
+    return render(request, 'pages/about.html')
+
+>>>>>>> 2a1b38b098010972325ce498d1608cc0cf625009

@@ -11,7 +11,7 @@ class PostForm(ModelForm):
     
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ["image", "category", "title", "slug", "subtitle", "description", "text"]
         
 class EditForm(ModelForm):
     

@@ -17,4 +17,7 @@ urlpatterns = [
     path("register/", register, name="Register"),
     path("add_post/", add_post , name="add_post"),
     path("editar_perfil/", editar_perfil, name="editar_perfil"),
+    path("editar_perfil/", editar_perfil, name="editar_perfil"),
+    path("edit_post/<id>/", edit_post, name="edit_post"),
+    path("delete_post/<id>/", delete_post, name="delete_post"),
 ]

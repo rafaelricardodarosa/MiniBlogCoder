@@ -41,6 +41,17 @@ class Post(models.Model):
             return mark_safe('<img src="{}" height="50" />'.format(self.image.url))
         else:
             return mark_safe('<p>Sem imagem</p>')
+        
+class EditPost(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False)
+    title = models.CharField(max_length=150, null=False)
+    slug = models.SlugField(unique=True, null=False)
+    subtitle = models.CharField(max_length=150, null=False)
+    description = models.TextField(null=False)
+    text = RichTextUploadingField()
+
+    def __str__(self):
+        return self.title
     
 
 

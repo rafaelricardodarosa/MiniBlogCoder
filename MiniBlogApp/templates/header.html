@@ -10,11 +10,6 @@
              </button>
              <div class="collapse navbar-collapse" id="navbarResponsive">
                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item {{home_page}}">
-                         <a class="nav-link" href="/">Home
-                             <span class="sr-only">(current)</span>
-                         </a>
-                     </li>
                      <li class="nav-item {{about_page}}">
                          <a class="nav-link" href="/about/">Sobre</a>
                      </li>
@@ -25,12 +20,12 @@
                          <a class="nav-link" href="/contact/">Contacto</a>
                      </li>
                      {% if user.is_authenticated %}
+                     <a class="nav-link" href="/add_post/">Añadir Post</a>    
                      <li class="nav-item">
                         <a class="nav-link" href="/editar_perfil/">{{user.username}}</a>
                      <li class="nav-item">
                          <a class="nav-link" href="/logout/">Cerrar sesión</a>
                      <li class="nav-item {{add_post_page}}">
-                         <a class="nav-link" href="/add_post/">Añadir Post</a>    
                      {% else %}
                      <li class="nav-item {{login_page}}">
                          <a class="nav-link" href="/login/">Iniciar sesión</a>

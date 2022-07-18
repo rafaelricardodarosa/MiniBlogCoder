@@ -1,7 +1,7 @@
-from django.shortcuts import redirect, render, HttpResponseRedirect
+from django.shortcuts import redirect, render, HttpResponseRedirect, get_object_or_404
 from django.core.paginator import Paginator
-from PostApp.models import Post, Category, Comment
-from PostApp.forms import PostForm
+from PostApp.models import EditPost, Post, Category, Comment
+from PostApp.forms import EditForm, PostForm
 from MiniBlogApp.models import Contact
 from MiniBlogApp.forms import ContactForm
 from .forms import *
@@ -156,7 +156,32 @@ def add_post(request):
         if info.is_valid():
             info.save()
             context["message"] = "Contenido subido exitosamente!"
+            return redirect("/blog/")
         else:
             context["form"] = info
             
+            
     return render(request, "pages/add_post.html",context)
+
+def edit_post(request, id):
+    
+    post = get_object_or_404(Post, id=id)
+    
+    data = {
+        "form": EditForm(instance=post)
+    }
+    if request.method == "POST":
+        formulario = EditForm(data=request.POST, instance=post, files=request.FILES)
+        if formulario.is_valid:
+            formulario.save()
+            data["mensaje"] = "Modificado correctamente"
+            return redirect("/blog/")
+        data["form"] = formulario
+        
+    
+    return render(request, "pages/edit_post.html", data) 
+
+def delete_post(request, id):
+    post = get_object_or_404(Post, id=id)
+    post.delete()
+    return redirect("/blog/")

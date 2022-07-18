@@ -29,8 +29,8 @@
                         <a class="nav-link" href="/editar_perfil/">{{user.username}}</a>
                      <li class="nav-item">
                          <a class="nav-link" href="/logout/">Cerrar sesión</a>
-                     <li class="nav-item">
-                         <a class="nav-link" href="/postear/">Añadir Post</a>    
+                     <li class="nav-item {{add_post_page}}">
+                         <a class="nav-link" href="/add_post/">Añadir Post</a>    
                      {% else %}
                      <li class="nav-item {{login_page}}">
                          <a class="nav-link" href="/login/">Iniciar sesión</a>

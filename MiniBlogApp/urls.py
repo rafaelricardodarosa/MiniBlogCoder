@@ -15,6 +15,6 @@ urlpatterns = [
     path("login/", login_request, name="Login"),
     path("logout/", logout_request, name="LogOut"),
     path("register/", register, name="Register"),
-    path("postear/", register, name="Postear"),
+    path("add_post/", add_post , name="add_post"),
     path("editar_perfil/", editar_perfil, name="editar_perfil"),
 ]

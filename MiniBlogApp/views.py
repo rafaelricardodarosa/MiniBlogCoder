@@ -1,12 +1,12 @@
-from django.shortcuts import redirect, render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render, HttpResponseRedirect
 from django.core.paginator import Paginator
 from PostApp.models import Post, Category, Comment
+from PostApp.forms import PostForm
 from MiniBlogApp.models import Contact
 from MiniBlogApp.forms import ContactForm
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -144,3 +144,19 @@ def editar_perfil(request):
         form = UserEditForm(initial={"email":user.email, "first_name":user.first_name,"last_name":user.last_name})
     
     return render(request, "editar_perfil.html", {"form":form, "user":user})
+
+def add_post(request):
+    
+    context = {
+        'form': PostForm,
+        'add_post_page': 'active',
+    }
+    if request.method == 'POST':
+        info = PostForm(data=request.POST, files=request.FILES)
+        if info.is_valid():
+            info.save()
+            context["message"] = "Contenido subido exitosamente!"
+        else:
+            context["form"] = info
+            
+    return render(request, "pages/add_post.html",context)

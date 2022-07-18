@@ -1,0 +1,37 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Blog - Django {% endblock  %}
+
+{% block preloader %} {% include 'preloader.html' %} {% endblock  %}
+{% block header %} {% include 'header.html' %} {% endblock  %}
+{% block slide %} {% include 'slide.html' %} {% endblock  %}
+
+<section class="{% block container %} blog-posts {% endblock  %}">
+    <div class="container">
+        <div class="row">
+            {% block content %} 
+            <div class="row">
+                <div class="col-lg-16 offset-md-5">
+                    <div class="Image">
+                        <div class="card-body">
+                            <h2>Subi tu propio contenido al blog!</h2>
+                            <hr>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <table>
+                                    {{ form.as_table }}
+                                 </table>
+                                <div class="d-flex justify-content-end">
+                                    <input type="submit" value="Subir contenido" class="btn btn-primary">
+                                    &nbsp;
+                                    <input type="reset" value="Cancelar" class="btn btn-secondary">    
+                                </div>
+                            </form>
+                        </div>
+                    </div>           
+            {% endblock  %}
+            
+        </div>
+    </div>
+</section>
+ {% block footer %} {% include 'footer.html' %} {% endblock  %}

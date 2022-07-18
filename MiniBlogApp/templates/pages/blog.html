@@ -27,8 +27,11 @@
                             <li><a href="#">{{item.user.first_name}}</a></li>
                             <li><a href="#">{{item.updated_at|date:"d/m/Y"}}</a></li>
                             <li><a href="#">{{item.user.first_name}}</a></li>
+                            {% if user.is_authenticated %}
                             <a class="nav-link" href="{% url 'edit_post' item.id %}">Modificar</a>
                             <a class="nav-link" href="{% url 'delete_post' item.id %}">Eliminar</a>
+                            {% else %}
+                            {% endif %}
                           </ul>
                           <p>{{item.description}}</p>
                         </div>

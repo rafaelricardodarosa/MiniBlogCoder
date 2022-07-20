@@ -21,7 +21,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False)
-    user = models.ForeignKey(User,  on_delete=models.CASCADE, null=False)
+    # user = models.ForeignKey(User,  on_delete=models.CASCADE, null=False)
 
     title = models.CharField(max_length=150, null=False)
     slug = models.SlugField(unique=True, null=False)
